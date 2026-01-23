@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>KirishKeGanne</h2>
+        <ul>
+            <li>Home</li>
+            <li>Search</li>
+            <li>Your Library</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <h1>Playlists</h1>
+
+        <div class="songs">
+            <div class="song" data-index="0">Song One</div>
+            <div class="song" data-index="1">Song Two</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Player -->
+<div class="player">
+    <button id="prev">⏮</button>
+    <button id="play">▶</button>
+    <button id="next">⏭</button>
+
+    <input type="range" id="progress" value="0">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

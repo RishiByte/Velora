@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+}
+
+.container {
+    display: flex;
+    height: 90vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: #000;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.song {
+    background: #181818;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.song:hover {
+    background: #282828;
+}
+
+.player {
+    height: 10vh;
+    background: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
