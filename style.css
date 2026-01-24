@@ -12,6 +12,7 @@ body {
 
 .sidebar {
     width: 220px;
+    height: 100vh;
     background: #000;
     padding: 20px;
 }
@@ -36,6 +37,7 @@ body {
     padding: 10px;
     margin: 10px 0;
     cursor: pointer;
+    border-radius: 10px;
     
 }
 
@@ -44,32 +46,44 @@ body {
 }
 
 .player {
-    height: 10vh;
-    background: #181818;
+    background-color: aliceblue;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    
 }
-.panel{
+
+    .panel{
     display: inline-block;
     width: 50px;
     height: 50px;
+    border-radius: 20%;
+    
     
     margin: auto;
     
+}
+
+#disc{
+    height: 220px;
+    width: 220px;
+    background-size: cover;
+    background-image: url("./Images/Screenshot\ 2026-01-24\ at\ 4.12.06\ PM.png");
+    
+    
+    margin-top:150% ;
 }
 #i0{
     background-image: url('./Images/Sickomode.jpeg');
     width: 50px;
     background-size: cover;
-    height: 50px;
+    height:50px;
+    margin: auto
 }
 #i1{
     background-image: url('./Images/Fein.jpg');
     width: 50px;
     background-size: cover;
     height: 50px;
+    
 }
 #i2{
     background-image: url('./Images/Blindinglights.jpg');
@@ -88,4 +102,20 @@ body {
     width: 50px;
     background-size: cover;
     height: 50px;
+}
+#t0,#t1,#t2,#t3,#t4{
+    margin-left: 20px;
+    
+    font-size: 20px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+
+
+
+}
+p{
+    display: inline-block;
+}
+img{
+    border-radius: 20%;
 }
