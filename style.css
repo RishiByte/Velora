@@ -119,3 +119,7 @@ p{
 img{
     border-radius: 20%;
 }
+.player{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
