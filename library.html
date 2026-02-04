@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Library - Velora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Velora</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="library.html">Your Library</a></li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <h1>Your Library</h1>
+      <div id="libList"></div>
+    </div>
+  </div>
+
+  <script>
+    function renderLibrary(){
+      const lib = JSON.parse(localStorage.getItem('vk_library')|| '[]');
+      const el = document.getElementById('libList');
+      el.innerHTML = '';
+      if (lib.length === 0) {
+        el.textContent = 'Library is empty. Add tracks from the player.';
+        return;
+      }
+      lib.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'song';
+        const title = document.createElement('span');
+        title.textContent = item.title;
+        const playBtn = document.createElement('button');
+        playBtn.textContent = 'Play';
+        playBtn.style.marginLeft = '12px';
+        playBtn.addEventListener('click', () => {
+          // navigate to index and request play
+          window.location.href = `index.html?play=${item.index}`;
+        });
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.style.marginLeft = '8px';
+        removeBtn.addEventListener('click', () => {
+          const lib = JSON.parse(localStorage.getItem('vk_library')|| '[]');
+          const updated = lib.filter(l => l.index !== item.index);
+          localStorage.setItem('vk_library', JSON.stringify(updated));
+          renderLibrary();
+        });
+        row.appendChild(title);
+        row.appendChild(playBtn);
+        row.appendChild(removeBtn);
+        el.appendChild(row);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', renderLibrary);
+  </script>
+</body>
+</html>

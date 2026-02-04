@@ -7,16 +7,29 @@ body {
 
 .container {
     display: flex;
-    height: 90vh;
+    height: calc(100vh - 0px);
 }
 
 .sidebar {
     width: 220px;
-    height: 100vh;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
     background: #000;
     padding: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
 }
+.sidebar h2 {
+   
+    font-size: 40px;
 
+}
+.sidebar h2:hover{
+    color: gray;
+    cursor: pointer;
+    
+}
 .sidebar ul {
     list-style: none;
     padding: 0;
@@ -26,10 +39,16 @@ body {
     margin: 15px 0;
     cursor: pointer;
 }
+.sidebar ul li a{
+    text-decoration: none;
+    color: white;
+}
 
 .main {
     flex: 1;
     padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
 }
 
 .song {
@@ -103,7 +122,59 @@ body {
     background-size: cover;
     height: 50px;
 }
-#t0,#t1,#t2,#t3,#t4{
+#i5{
+    background-image: url('./Images/Bargad.jpg');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+#i6{
+    background-image: url('./Images/Rakhlo\ tum\ chupake.png');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+#i7{
+    background-image: url('./Images/Die\ for\ you.png');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+#i8{
+    background-image: url('./Images/Sunflower.jpg');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+#i9{
+    background-image: url('./Images/Husn.png');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+#i10{
+    background-image: url('./Images/isthere.jpg');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+#i11{
+    background-image: url('./Images/Co2.jpeg');
+    width: 50px;
+    background-size: cover;
+    height: 50px;
+}
+
+
+
+
+
+#t0,#t1,#t2,#t3,#t4,#t5,#t6,#t7,#t8,#t9,#t10,#t11{
     margin-left: 20px;
     
     font-size: 20px;
@@ -122,4 +193,7 @@ img{
 .player{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+.Lib{
+    display: grid;
 }

@@ -3,17 +3,33 @@ let fein = document.getElementById("s1");
 let BlindingLights = document.getElementById("s2");
 let levitate = document.getElementById("s3");
 let Peaches = document.getElementById("s4");
+let Bargad = document.getElementById("s5");
+let Rakhlo = document.getElementById("s6");
+let DieForYou = document.getElementById("s7");
+let Sunflower = document.getElementById("s8");
+let Husn = document.getElementById("s9");
+let IsThereSomeoneElse = document.getElementById("s10");
+let CO2 = document.getElementById("s11");
 
 let Disc = document.getElementById("disc");
 let prev = document.getElementById("prev");
 let play = document.getElementById("play");
 let next = document.getElementById("next");
 
+let addToLibraryBtn = document.getElementById('addToLibrary');
+
 let feinAudio = new Audio("./Songs/Fein.mp3");
 let sickomodeAudio = new Audio("./Songs/Sicko.mp3");
 let BlindingLightsAudio = new Audio("./Songs/Blinding.mp3");
 let levitateAudio = new Audio("./Songs/Levitating.mp3");
 let PeachesAudio = new Audio("./Songs/Peaches.mp3");
+let CO2Audio = new Audio("./Songs/CO2.mp3");
+let BargadAudio = new Audio("./Songs/Bargad.mp3");
+let RakhloAudio = new Audio("./Songs/Rakhlo Tum Chupaake.mp3");
+let DieForYouAudio = new Audio("./Songs/Die for you.mp3");
+let SunflowerAudio = new Audio("./Songs/Sunflower.mp3");
+let HusnAudio = new Audio("./Songs/Husn.mp3");
+let IsThereSomeoneElseAudio = new Audio("./Songs/isthere.mp3");
 
 let progress = document.getElementById("progress");
 let currentTimeEl = document.getElementById("currentTime");
@@ -28,6 +44,13 @@ const tracks = [
   {btn: BlindingLights, audio: BlindingLightsAudio, img: "./Images/Blindinglights.jpg", title: "Blinding Lights"},
   {btn: levitate, audio: levitateAudio, img: "./Images/Levitating.jpeg", title: "Levitating"},
   {btn: Peaches, audio: PeachesAudio, img: "./Images/Peaches.jpeg", title: "Peaches"}
+  ,{btn: CO2, audio: CO2Audio, img: "./Images/CO2.jpeg", title: "CO2"}
+  ,{btn: Bargad, audio: BargadAudio, img: "./Images/Bargad.jpg", title: "Bargad"}
+  ,{btn: Rakhlo, audio: RakhloAudio, img: "./Images/Rakhlo Tum Chupake.png", title: "Rakhlo Tum Chupake"}
+  ,{btn: DieForYou, audio: DieForYouAudio, img: "./Images/Die for you.png", title: "Die for you"}
+  ,{btn: Sunflower, audio: SunflowerAudio, img: "./Images/Sunflower.jpg", title: "Sunflower"}
+  ,{btn: Husn, audio: HusnAudio, img: "./Images/Husn.png", title: "Husn"}
+  ,{btn: IsThereSomeoneElse, audio: IsThereSomeoneElseAudio, img: "./Images/isthere.jpg", title: "Is there someone else?"}
 ];
 
 function resetTrackUI() {
@@ -150,6 +173,38 @@ progress.addEventListener('input', () => {
 play.addEventListener('click', playToggle);
 prev.addEventListener('click', playPrev);
 next.addEventListener('click', playNext);
+
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+const playParam = getQueryParam('play');
+if (playParam) {
+  const idx = parseInt(playParam, 10);
+  if (!isNaN(idx) && idx >= 0 && idx < tracks.length) {
+
+    setTimeout(() => loadTrack(idx, true), 200);
+  }
+}
+
+window.playTrackIndex = (idx) => {
+  if (typeof idx === 'number') loadTrack(idx, true);
+};
+
+if (addToLibraryBtn) {
+  addToLibraryBtn.addEventListener('click', () => {
+    if (currentIndex === -1) return;
+    const library = JSON.parse(localStorage.getItem('vk_library') || '[]');
+    const item = { index: currentIndex, title: tracks[currentIndex].title, img: tracks[currentIndex].img };
+    if (!library.find(l => l.index === item.index)) {
+      library.push(item);
+      localStorage.setItem('vk_library', JSON.stringify(library));
+      addToLibraryBtn.textContent = '✓ Added';
+      setTimeout(() => addToLibraryBtn.textContent = '+ Library', 1400);
+    }
+  });
+}
 
 function formatTime(time) {
   if (!time || isNaN(time)) return '0:00';

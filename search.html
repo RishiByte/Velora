@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search - Velora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Velora</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="library.html">Your Library</a></li>
+      </ul>
+    </div>
+    <div class="main">
+      <h1>Search</h1>
+      <input id="q" placeholder="Search songs or artists" style="width:100%; padding:12px; margin-bottom:16px;" />
+      <div id="results"></div>
+    </div>
+  </div>
+
+  <script>
+    const titles = [
+      'Sicko Mode','Fein','Blinding Lights','Levitating','Peaches','Bargad','Rakhlo Tum Chupake','Die for you','Sunflower','Husn','Is there someone else?','CO2'
+    ];
+
+    const resultsEl = document.getElementById('results');
+    const q = document.getElementById('q');
+
+    function render(list){
+      resultsEl.innerHTML = '';
+      list.forEach((t, idx) => {
+        const div = document.createElement('div');
+        div.className = 'song';
+        div.style.cursor = 'pointer';
+        div.textContent = t;
+        div.addEventListener('click', () => {
+          window.location.href = `index.html?play=${idx}`;
+        });
+        resultsEl.appendChild(div);
+      });
+    }
+
+    q.addEventListener('input', () => {
+      const term = q.value.trim().toLowerCase();
+      if (!term) return render(titles);
+      render(titles.filter(t => t.toLowerCase().includes(term)));
+    });
+
+    render(titles);
+  </script>
+</body>
+</html>
