@@ -44,7 +44,7 @@ const tracks = [
   {btn: BlindingLights, audio: BlindingLightsAudio, img: "./Images/Blindinglights.jpg", title: "Blinding Lights"},
   {btn: levitate, audio: levitateAudio, img: "./Images/Levitating.jpeg", title: "Levitating"},
   {btn: Peaches, audio: PeachesAudio, img: "./Images/Peaches.jpeg", title: "Peaches"}
-  ,{btn: CO2, audio: CO2Audio, img: "./Images/CO2.jpeg", title: "CO2"}
+  ,{btn: CO2, audio: CO2Audio, img: "./Images/Co2.jpeg", title: "CO2"}
   ,{btn: Bargad, audio: BargadAudio, img: "./Images/Bargad.jpg", title: "Bargad"}
   ,{btn: Rakhlo, audio: RakhloAudio, img: "./Images/Rakhlo Tum Chupake.png", title: "Rakhlo Tum Chupake"}
   ,{btn: DieForYou, audio: DieForYouAudio, img: "./Images/Die for you.png", title: "Die for you"}
