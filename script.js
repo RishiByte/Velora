@@ -26,7 +26,7 @@ let PeachesAudio = new Audio("./Songs/Peaches.mp3");
 let CO2Audio = new Audio("./Songs/Co2.mp3");
 let BargadAudio = new Audio("./Songs/Bargad.mp3");
 let RakhloAudio = new Audio("./Songs/Rakhlo Tum Chupaake.mp3");
-let DieForYouAudio = new Audio("./Songs/Die for you.mp3");
+let DieForYouAudio = new Audio("./Songs/Die.mp3");
 let SunflowerAudio = new Audio("./Songs/Sunflower.mp3");
 let HusnAudio = new Audio("./Songs/Husn.mp3");
 let IsThereSomeoneElseAudio = new Audio("./Songs/isthere.mp3");
@@ -47,7 +47,7 @@ const tracks = [
   ,{btn: CO2, audio: CO2Audio, img: "./Images/Co2.jpeg", title: "CO2"}
   ,{btn: Bargad, audio: BargadAudio, img: "./Images/Bargad.jpg", title: "Bargad"}
   ,{btn: Rakhlo, audio: RakhloAudio, img: "./Images/Rakhlo Tum Chupake.png", title: "Rakhlo Tum Chupake"}
-  ,{btn: DieForYou, audio: DieForYouAudio, img: "./Images/Die for you.png", title: "Die for you"}
+  ,{btn: DieForYou, audio: DieForYouAudio, img: "./Images/Die.png", title: "Die for you"}
   ,{btn: Sunflower, audio: SunflowerAudio, img: "./Images/Sunflower.jpg", title: "Sunflower"}
   ,{btn: Husn, audio: HusnAudio, img: "./Images/Husn.png", title: "Husn"}
   ,{btn: IsThereSomeoneElse, audio: IsThereSomeoneElseAudio, img: "./Images/isthere.jpg", title: "Is there someone else?"}
