@@ -2,59 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Velora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Velora - Anime Vibes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Script&family=Noto+Sans+JP:wght@100..900&family=Playwrite+MX+Guides&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shojumaru&family=Tourney:ital,wght@0,100..900;1,100..900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body data-page="home">
 
-<div class="container">
-    <div class="sidebar">
-        <h2>Velora</h2>
-        <ul>
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="search.html">Search</a></li>
-            <li><a href="library.html">Your Library</a></li>
-        </ul>
-        <div id="disc"></div>
-    <div class="player">
-    <button id="prev">⏮</button>
-    <button id="play">▶</button>
-    <button id="next">⏭</button>
-    </div>
-    <div class="Lib">
-    <button id="addToLibrary" title="Add current track to library">+ Library</button>
-    </div>
-    
-<div class="progress-bar">
-<input type="range" id="progress" value="0" min="0" max="100">
-<span id="currentTime">0:00</span> 
-<span id="duration">0:00</span>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-compact-disc fa-spin-hover"></i>
+            <h2>Velora</h2>
+        </div>
+        <nav>
+            <ul>
+                <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="search.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="library.html"><i class="fa-solid fa-bookmark"></i> Your Library</a></li>
+            </ul>
+        </nav>
+        
+        <div class="now-playing-sidebar">
+            <div id="playing-art" class="playing-art">
+                <div class="art-placeholder"><i class="fa-solid fa-music"></i></div>
+            </div>
+            <div class="playing-info">
+                <h4 id="playing-title">No Track Selected</h4>
+                <p id="playing-artist">---</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-nav">
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="mainSearchInput" placeholder="Search for songs, artists...">
+            </div>
+            <div class="user-profile">
+                <a href="profile.html">
+                    <img src="https://ui-avatars.com/api/?name=User&background=1DB954&color=fff" alt="User" class="avatar">
+                </a>
+            </div>
+        </header>
+
+        <section class="content-header">
+            <h1>Naruto Anthems</h1>
+            <p>Epic tunes to awaken your inner ninja</p>
+        </section>
+
+        <!-- Dynamic songs container -->
+        <div class="songs-grid" id="songs-container">
+            <!-- Loader -->
+            <div class="loader">
+                <div class="spinner"></div>
+                <p>Summoning tracks...</p>
+            </div>
+        </div>
+    </main>
 </div>
 
-    </div>
-    <div class="main">
-        <h1>Mood Lifters</h1>
-
-        <div class="songs">
-            <div class="song" id="s0"><div class="panel" id="i0"></div ><p id=t0>Sicko Mode </p></div>
-            <div class="song" id="s1"><div class="panel" id="i1"></div ><p id=t1>Fein</p></div>
-            <div class="song" id="s2"><div class="panel" id="i2"></div ><p id=t2>Blinding Lights</p></div>
-            <div class="song" id="s3"><div class="panel" id="i3"></div ><p id=t3>Levitating</p></div>
-            <div class="song" id="s4"><div class="panel" id="i4"></div ><p id=t4>Peaches</p></div>
-            <div class="song" id="s5"><div class="panel" id="i5"></div ><p id=t5>Bargad</p></div>
-            <div class="song" id="s6"><div class="panel" id="i6"></div ><p id=t6>Rakhlo Tum Chupake</p></div>
-            <div class="song" id="s7"><div class="panel" id="i7"></div ><p id=t7>Die for you</p></div>
-            <div class="song" id="s8"><div class="panel" id="i8"></div ><p id=t8>Sunflower</p></div>
-            <div class="song" id="s9"><div class="panel" id="i9"></div ><p id=t9>Husn</p></div>
-            <div class="song" id="s10"><div class="panel" id="i10"></div ><p id=t10>Is there someone else?</p></div>
-            <div class="song" id="s11"><div class="panel" id="i11"></div ><p id=t11>CO2</p></div>
-
+<!-- Sticky Bottom Player -->
+<div class="player-bar">
+    <div class="player-left">
+        <div class="player-track-info">
+            <div id="player-art" class="player-art"></div>
+            <div class="player-track-details">
+                <h4 id="player-title">Welcome to Velora</h4>
+                <p id="player-artist">Ready to play</p>
+            </div>
+            <button id="addToLibrary" class="icon-btn tooltip" title="Add to Library">
+                <i class="fa-regular fa-heart"></i>
+            </button>
         </div>
-    </div> 
+    </div>
 
+    <div class="player-center">
+        <div class="player-controls">
+            <button id="prev" class="control-btn"><i class="fa-solid fa-backward-step"></i></button>
+            <button id="play" class="control-btn play-btn"><i class="fa-solid fa-play"></i></button>
+            <button id="next" class="control-btn"><i class="fa-solid fa-forward-step"></i></button>
+        </div>
+        <div class="progress-container">
+            <span id="currentTime" class="time-text">0:00</span>
+            <input type="range" id="progress" value="0" min="0" max="100" class="progress-slider">
+            <span id="duration" class="time-text">0:00</span>
+        </div>
+    </div>
+    
+    <div class="player-right">
+        <!-- Volume control can go here if needed -->
+    </div>
 </div>
 
 <script src="script.js"></script>

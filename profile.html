@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Your Library - Velora</title>
+    <title>Profile - Velora</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body data-page="library">
+<body data-page="profile">
 
 <div class="app-container">
     <aside class="sidebar">
@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="search.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
-                <li class="active"><a href="library.html"><i class="fa-solid fa-bookmark"></i> Your Library</a></li>
+                <li><a href="library.html"><i class="fa-solid fa-bookmark"></i> Your Library</a></li>
             </ul>
         </nav>
         
@@ -41,18 +41,30 @@
         <header class="top-nav">
             <div class="user-profile">
                 <a href="profile.html">
-                    <img src="https://ui-avatars.com/api/?name=User&background=1DB954&color=fff" alt="User" class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User&background=1DB954&color=fff" alt="User" class="avatar" style="border: 2px solid var(--accent-color);">
                 </a>
             </div>
         </header>
 
-        <section class="content-header">
-            <h1>Your Liked Songs</h1>
-            <p id="library-count">0 songs</p>
+        <section class="profile-header" style="display: flex; align-items: center; gap: 32px; padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px;">
+            <img src="https://ui-avatars.com/api/?name=User&background=1DB954&color=fff&size=150" alt="User Hero" style="border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.4);">
+            <div>
+                <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 8px;">Profile</p>
+                <h1 style="font-size: 4rem; font-weight: 700; margin-bottom: 16px;">Velora Master</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;"><span id="profile-library-count">0</span> Saved Tracks • 2 Followers</p>
+            </div>
         </section>
 
-        <!-- Dynamic songs container -->
-        <div class="songs-grid" id="songs-container">
+        <h3>Top Artists Configured</h4>
+        <div style="display: flex; gap: 16px; margin-top: 16px;">
+            <div style="background: var(--card-bg); padding: 16px; border-radius: 12px; text-align: center; width: 150px;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background: #ff4500; margin: 0 auto 16px;"></div>
+                <h4 style="font-size: 0.9rem;">Naruto OST</h4>
+            </div>
+            <div style="background: var(--card-bg); padding: 16px; border-radius: 12px; text-align: center; width: 150px;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background: #40e0d0; margin: 0 auto 16px;"></div>
+                <h4 style="font-size: 0.9rem;">Travis Scott</h4>
+            </div>
         </div>
     </main>
 </div>
@@ -66,8 +78,8 @@
                 <h4 id="player-title">Welcome to Velora</h4>
                 <p id="player-artist">Ready to play</p>
             </div>
-            <button id="addToLibrary" class="icon-btn tooltip added" title="Remove from Library">
-                <i class="fa-solid fa-heart"></i>
+            <button id="addToLibrary" class="icon-btn tooltip" title="Add to Library">
+                <i class="fa-regular fa-heart"></i>
             </button>
         </div>
     </div>
