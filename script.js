@@ -221,7 +221,7 @@ function updatePlayBtn(isPlaying) {
 }
 
 // Audio Events
-let animationFrameId;
+let isDragging = false;
 
 function updateSliderFill() {
     if (!progress) return;
@@ -230,28 +230,19 @@ function updateSliderFill() {
 }
 
 function updateProgress() {
-    if(!activeAudio.paused && !isNaN(activeAudio.duration)) {
+    if(!isDragging && !isNaN(activeAudio.duration) && activeAudio.duration > 0) {
         const value = (activeAudio.currentTime / activeAudio.duration) * 100;
         progress.value = value;
-        currentTimeEl.textContent = formatTime(activeAudio.currentTime);
+        if(currentTimeEl) currentTimeEl.textContent = formatTime(activeAudio.currentTime);
         updateSliderFill();
-        animationFrameId = requestAnimationFrame(updateProgress);
     }
 }
 
-activeAudio.addEventListener('play', () => {
-    animationFrameId = requestAnimationFrame(updateProgress);
-});
+activeAudio.addEventListener('timeupdate', updateProgress);
 
-activeAudio.addEventListener('pause', () => {
-    cancelAnimationFrame(animationFrameId);
-});
-
-activeAudio.addEventListener('timeupdate', () => {
-    // Fallback/sync for duration changes
-    if(!isNaN(activeAudio.duration)) {
-        durationEl.textContent = formatTime(activeAudio.duration);
-    }
+activeAudio.addEventListener('loadedmetadata', () => {
+    if(durationEl) durationEl.textContent = formatTime(activeAudio.duration);
+    updateSliderFill();
 });
 
 activeAudio.addEventListener('ended', () => loadTrack(currentIndex + 1));
@@ -262,11 +253,18 @@ if(nextBtn) nextBtn.addEventListener('click', () => loadTrack(currentIndex + 1))
 if(prevBtn) prevBtn.addEventListener('click', () => loadTrack(currentIndex - 1));
 
 if(progress) {
+    // Prevent UI jumping while dragging
+    progress.addEventListener('mousedown', () => isDragging = true);
+    progress.addEventListener('mouseup', () => isDragging = false);
+    progress.addEventListener('touchstart', () => isDragging = true);
+    progress.addEventListener('touchend', () => isDragging = false);
+
     progress.addEventListener('input', () => {
-        if(!activeAudio.src) return;
+        if(!activeAudio.src || isNaN(activeAudio.duration)) return;
         const seekTime = (progress.value / 100) * activeAudio.duration;
         if(!isNaN(seekTime)) {
             activeAudio.currentTime = seekTime;
+            if(currentTimeEl) currentTimeEl.textContent = formatTime(seekTime);
             updateSliderFill();
         }
     });
